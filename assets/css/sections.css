@@ -198,8 +198,8 @@
 
 .hero__note {
   position: absolute;
-  left: -46%;
-  top: 16%;
+  left: -30%;
+  top: -11%;
   transform: rotate(-6deg);
   color: var(--coffee);
   font-size: clamp(1.35rem, 1.1rem + 0.7vw, 1.75rem);
@@ -248,7 +248,8 @@
 
 @media (max-width: 1180px) {
   .hero__note {
-    left: -38%;
+    left: -24%;
+    top: -13%;
   }
 }
 
@@ -258,7 +259,7 @@
   }
 
   .hero__title {
-    font-size: min(9rem, calc((100vw - 2 * var(--gutter)) / 4.35));
+    font-size: min(8.5rem, calc((100vw - 2 * var(--gutter)) / 5.1));
   }
 
   .hero__media {
@@ -268,10 +269,17 @@
   }
 
   .hero__note {
-    left: auto;
-    right: 104%;
-    top: 34%;
-    width: max-content;
+    position: relative;
+    inset: auto;
+    width: auto;
+    margin: 22px -12% 0;
+    transform: rotate(-3deg);
+    text-align: center;
+  }
+
+  .hero__note br,
+  .hero__note .hand-note__arrow {
+    display: none;
   }
 
   .hero__scroll {
