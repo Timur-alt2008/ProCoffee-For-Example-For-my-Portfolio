@@ -1,0 +1,9 @@
+{
+  "name": "Example — кофейня и пекарня",
+  "short_name": "Example",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fbf6ee",
+  "theme_color": "#20140e",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
