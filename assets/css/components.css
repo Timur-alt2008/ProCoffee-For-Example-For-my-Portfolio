@@ -1,8 +1,8 @@
 /* =========================================================
-   Example — компоненты: шапка, меню, кнопки, поля, подвал
+   Example — components: header, menu, buttons, fields, footer
    ========================================================= */
 
-/* ---------- шапка ---------- */
+/* ---------- header ---------- */
 .site-header {
   position: fixed;
   inset: 0 0 auto 0;
@@ -107,7 +107,7 @@
 }
 
 .site-nav a::after {
-  /* зерно под активным пунктом */
+  /* a coffee bean under the active link */
   content: "";
   position: absolute;
   left: 50%;
@@ -234,7 +234,7 @@
   }
 }
 
-/* ---------- полноэкранное мобильное меню ---------- */
+/* ---------- full-screen mobile menu ---------- */
 .overlay-menu {
   position: fixed;
   inset: 0;
@@ -358,14 +358,14 @@
   color: var(--honey);
 }
 
-/* ---------- иконки ---------- */
+/* ---------- icons ---------- */
 .icon {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
 }
 
-/* ---------- кнопки с эффектом «наливания» ---------- */
+/* ---------- buttons with a “pour” effect ---------- */
 .btn {
   --btn-bg: var(--espresso);
   --btn-ink: var(--on-dark);
@@ -395,7 +395,7 @@
 }
 
 .btn::before {
-  /* «кофе», который наливается снизу волной */
+  /* coffee that pours in from the bottom with a wavy top */
   content: "";
   position: absolute;
   z-index: -1;
@@ -608,7 +608,7 @@
   color: var(--honey);
 }
 
-/* ---------- заголовки секций ---------- */
+/* ---------- section headings ---------- */
 .section-head {
   display: grid;
   gap: 16px;
@@ -666,7 +666,7 @@
   color: var(--on-dark-soft);
 }
 
-/* ---------- рукописные заметки ---------- */
+/* ---------- handwritten notes ---------- */
 .hand-note {
   position: relative;
 }
@@ -689,7 +689,7 @@
   stroke-dashoffset: 0;
 }
 
-/* ---------- чипы ---------- */
+/* ---------- chips ---------- */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -709,7 +709,7 @@
   color: var(--caramel-600);
 }
 
-/* ---------- поля форм ---------- */
+/* ---------- form fields ---------- */
 .field {
   display: grid;
   gap: 8px;
@@ -785,7 +785,7 @@
   display: none;
 }
 
-/* ---------- соцсети, контакты ---------- */
+/* ---------- socials, contacts ---------- */
 .socials {
   display: flex;
   gap: 10px;
@@ -841,7 +841,7 @@
   color: var(--honey);
 }
 
-/* ---------- подвал ---------- */
+/* ---------- footer ---------- */
 .site-footer {
   position: relative;
   background-color: var(--espresso);
@@ -851,7 +851,7 @@
 }
 
 .site-footer::before {
-  /* деревянная полоса — как край барной стойки */
+  /* a wooden strip, like the edge of a bar counter */
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
@@ -998,7 +998,7 @@
   transform: translateY(-3px);
 }
 
-/* ---------- уведомление ---------- */
+/* ---------- toast ---------- */
 .toast {
   position: fixed;
   left: 50%;
@@ -1024,7 +1024,7 @@
   transform: translate(-50%, 0);
 }
 
-/* ---------- модальные окна ---------- */
+/* ---------- dialogs ---------- */
 dialog {
   padding: 0;
   border: 0;
@@ -1039,7 +1039,7 @@ dialog::backdrop {
   backdrop-filter: blur(4px);
 }
 
-/* ---------- крошки ---------- */
+/* ---------- breadcrumbs ---------- */
 .crumbs {
   display: flex;
   flex-wrap: wrap;

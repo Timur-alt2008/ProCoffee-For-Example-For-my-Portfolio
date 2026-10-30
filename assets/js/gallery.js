@@ -1,5 +1,5 @@
 /* =========================================================
-   Example — галерея: фильтры и просмотр фото (клавиатура, свайп)
+   Example — gallery: filters and photo viewer (keyboard, swipe)
    ========================================================= */
 (function () {
   'use strict';
@@ -14,7 +14,7 @@
     var filters = $$('[data-filter]');
     var emptyMsg = $('[data-gallery-empty]');
 
-    /* ---------- фильтры ---------- */
+    /* ---------- filters ---------- */
     filters.forEach(function (f) {
       f.addEventListener('click', function () {
         var cat = f.getAttribute('data-filter');
@@ -34,7 +34,7 @@
       });
     });
 
-    /* ---------- лайтбокс ---------- */
+    /* ---------- lightbox ---------- */
     var dlg = $('[data-lightbox]');
     var img = $('[data-lb-img]', dlg);
     var cap = $('[data-lb-caption]', dlg);
@@ -59,7 +59,7 @@
       img.alt = b.getAttribute('data-caption');
       cap.textContent = b.getAttribute('data-caption');
       cnt.textContent = (current + 1) + ' / ' + visible.length;
-      /* предзагрузка соседнего фото */
+      /* preload the next photo */
       var nb = visible[(current + 1) % visible.length];
       if (nb) { var pre = new Image(); pre.src = nb.getAttribute('data-full'); }
     };
@@ -94,7 +94,7 @@
       if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
     });
 
-    /* свайп */
+    /* swipe */
     var sx = 0;
     var sy = 0;
     dlg.addEventListener('touchstart', function (e) {

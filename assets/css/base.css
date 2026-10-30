@@ -1,5 +1,5 @@
 /* =========================================================
-   Example — база: сброс, типографика, сетка, появление
+   Example — base: reset, typography, layout, reveal
    ========================================================= */
 *,
 *::before,
@@ -170,7 +170,7 @@ table {
   top: 16px;
 }
 
-/* ---------- сетка ---------- */
+/* ---------- layout ---------- */
 .container {
   width: 100%;
   max-width: calc(var(--container) + var(--gutter) * 2);
@@ -193,7 +193,7 @@ table {
   background-color: var(--cream);
 }
 
-/* ---------- типографика ---------- */
+/* ---------- typography ---------- */
 .hand,
 .hand-note {
   font-family: var(--font-hand);
@@ -212,7 +212,7 @@ table {
   color: var(--caramel);
 }
 
-/* ---------- появление при прокрутке ---------- */
+/* ---------- reveal on scroll ---------- */
 .js [data-reveal] {
   opacity: 0;
   transform: translate3d(0, 28px, 0);
@@ -225,7 +225,7 @@ table {
   transform: none;
 }
 
-/* фото «проявляются» из рамки и мягко уменьшаются */
+/* photos develop out of their frame and gently settle */
 .js .img-reveal[data-reveal] {
   opacity: 1;
   transform: none;

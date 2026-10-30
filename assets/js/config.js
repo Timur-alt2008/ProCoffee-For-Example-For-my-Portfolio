@@ -1,10 +1,10 @@
 /* =========================================================
-   Example — настройки сайта
+   Example — site settings
    ---------------------------------------------------------
    booking.mode:
-     'demo'     — бронь сохраняется только в браузере посетителя (по умолчанию)
-     'endpoint' — бронь отправляется POST-запросом (JSON) на booking.endpoint.
-                  Пример серверной функции: server/booking-worker.js
+     'demo'     — bookings are stored only in the visitor's browser (default)
+     'endpoint' — bookings are sent as a JSON POST request to booking.endpoint.
+                  Example server function: server/booking-worker.js
    ========================================================= */
 window.EX_CONFIG = {
   booking: {
@@ -14,7 +14,7 @@ window.EX_CONFIG = {
   },
   cafe: {
     name: 'Example',
-    address: 'ул. Примерная, 7, Киев',
+    address: '7 Example Street, Kyiv',
     phone: '+380 44 000 00 00',
     mapQuery: '50.4655,30.5155'
   }

@@ -1,5 +1,5 @@
 /* =========================================================
-   Example — общие модули: шапка, меню, появление, время Киева
+   Example — shared modules: header, menu, reveal, Kyiv time
    ========================================================= */
 (function () {
   'use strict';
@@ -14,7 +14,7 @@
   EX.$$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
   EX.reduceMotion = function () { return reduceMq.matches; };
 
-  /* ---------- часы работы (минуты от полуночи), 0 = воскресенье ---------- */
+  /* ---------- opening hours, 0 = Sunday ---------- */
   EX.HOURS = {
     0: ['08:30', '20:00'],
     1: ['07:30', '21:00'],
@@ -36,7 +36,7 @@
     return (h < 10 ? '0' : '') + h + ':' + (mm < 10 ? '0' : '') + mm;
   };
 
-  /* Текущее время в Киеве — независимо от часового пояса посетителя */
+  /* Current time in Kyiv, whatever the visitor's time zone */
   EX.kyivNow = function () {
     var zones = ['Europe/Kyiv', 'Europe/Kiev'];
     for (var i = 0; i < zones.length; i++) {
@@ -56,7 +56,7 @@
           h: h, min: Number(get('minute')), wd: days.indexOf(get('weekday')),
           minutes: h * 60 + Number(get('minute'))
         };
-      } catch (e) { /* пробуем следующий идентификатор зоны */ }
+      } catch (e) { /* try the next zone identifier */ }
     }
     var n = new Date();
     return { y: n.getFullYear(), m: n.getMonth() + 1, d: n.getDate(), h: n.getHours(), min: n.getMinutes(), wd: n.getDay(), minutes: n.getHours() * 60 + n.getMinutes() };
@@ -68,7 +68,7 @@
     return now.minutes >= EX.toMin(h[0]) && now.minutes < EX.toMin(h[1]);
   };
 
-  /* ---------- уведомление ---------- */
+  /* ---------- toast ---------- */
   var toastTimer;
   EX.toast = function (text) {
     var el = EX.$('[data-toast]');
@@ -79,7 +79,7 @@
     toastTimer = setTimeout(function () { el.classList.remove('is-visible'); }, 3200);
   };
 
-  /* ---------- безопасное хранилище ---------- */
+  /* ---------- safe storage ---------- */
   EX.store = {
     get: function (key, fallback) {
       try {
@@ -92,7 +92,7 @@
     }
   };
 
-  /* ---------- шапка ---------- */
+  /* ---------- header ---------- */
   function initHeader() {
     var header = EX.$('[data-header]');
     if (!header) return;
@@ -107,7 +107,7 @@
     update();
   }
 
-  /* ---------- мобильное меню ---------- */
+  /* ---------- mobile menu ---------- */
   function initOverlay() {
     var toggle = EX.$('[data-nav-toggle]');
     var overlay = EX.$('[data-overlay]');
@@ -131,7 +131,7 @@
       overlay.removeAttribute('inert');
       overlay.classList.add('is-open');
       toggle.setAttribute('aria-expanded', 'true');
-      if (label) label.textContent = 'Закрыть меню';
+      if (label) label.textContent = 'Close menu';
       document.body.classList.add('is-locked');
       var first = EX.$('a', overlay);
       if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 350);
@@ -141,7 +141,7 @@
       overlay.classList.remove('is-open');
       overlay.setAttribute('inert', '');
       toggle.setAttribute('aria-expanded', 'false');
-      if (label) label.textContent = 'Открыть меню';
+      if (label) label.textContent = 'Open menu';
       document.body.classList.remove('is-locked');
       if (restore !== false && lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
     };
@@ -172,7 +172,7 @@
     });
   }
 
-  /* ---------- появление при прокрутке ---------- */
+  /* ---------- reveal on scroll ---------- */
   function initReveal() {
     var items = EX.$$('[data-reveal]');
     if (!('IntersectionObserver' in window) || EX.reduceMotion()) {
@@ -189,7 +189,7 @@
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
     items.forEach(function (el) { io.observe(el); });
 
-    /* элементы, уже видимые при загрузке (например, переход по якорю) */
+    /* elements already visible on load (e.g. after an anchor jump) */
     window.addEventListener('load', function () {
       items.forEach(function (el) {
         var r = el.getBoundingClientRect();
@@ -198,7 +198,7 @@
     });
   }
 
-  /* ---------- счётчики ---------- */
+  /* ---------- counters ---------- */
   function initCounters() {
     var els = EX.$$('[data-count]');
     if (!els.length) return;
@@ -225,7 +225,7 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- часы работы: подсветка сегодняшнего дня ---------- */
+  /* ---------- opening hours: highlight today ---------- */
   function initHours() {
     var now = EX.kyivNow();
     var today = EX.HOURS[now.wd];
@@ -235,11 +235,11 @@
     if (status) {
       var open = EX.isOpenNow();
       status.classList.toggle('is-open', open);
-      status.textContent = open ? 'Сейчас открыто до ' + today[1] : 'Сейчас закрыто · откроемся в ' + EX.HOURS[(now.minutes < EX.toMin(today[0])) ? now.wd : (now.wd + 1) % 7][0];
+      status.textContent = open ? 'Open now until ' + today[1] : 'Closed now · we open at ' + EX.HOURS[(now.minutes < EX.toMin(today[0])) ? now.wd : (now.wd + 1) % 7][0];
     }
   }
 
-  /* ---------- прочее ---------- */
+  /* ---------- misc ---------- */
   function initMisc() {
     EX.$$('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
     var toTop = EX.$('[data-to-top]');

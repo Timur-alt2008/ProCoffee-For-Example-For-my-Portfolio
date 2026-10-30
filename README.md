@@ -1,86 +1,86 @@
 # ProCoffee — For Example — For my Portfolio
 
-**Example · кофейня и пекарня** — демонстрационный сайт вымышленной европейской кофейни на Подоле (Киев) для портфолио веб-разработчика.
+**Example · coffee house & bakery** — a demo website for a fictional European-style coffee house in Podil, Kyiv, built for a web developer portfolio.
 
-**Сайт:** https://timur-alt2008.github.io/ProCoffee-For-Example-For-my-Portfolio/
+**Live site:** https://timur-alt2008.github.io/ProCoffee-For-Example-For-my-Portfolio/
 
-## Концепция
+## Concept
 
-Сайт построен вокруг идеи «кофе в ладонях»: тёплые округлые формы (арки окон, блюдца, кружки сверху), рукописные заметки бариста на полях, деревянные полки витрины и салфетки с отзывами. Это уютный гастрономический характер — в отличие от строгого журнального Barbershop и технологичного AutoServise.
+The site is built around the idea of “coffee in your hands”: warm, rounded shapes (arched windows, saucers, cups seen from above), a barista's handwritten notes in the margins, wooden pastry shelves and guest reviews on napkins. The character is cosy and gastronomic — a deliberate contrast to the strict, editorial Barbershop and the technical AutoServise projects.
 
-- **Палитра:** молоко, крем, карамель, шоколад, кофе, натуральное дерево
-- **Шрифты:** Yeseva One (заголовки), Golos Text (текст), Caveat (рукописные заметки)
-- **Фото:** Unsplash, подгружаются в нужном размере и формате (WebP/AVIF) через `srcset`
+- **Palette:** milk, cream, caramel, chocolate, coffee and natural wood
+- **Type:** Yeseva One (headings), Golos Text (body), Caveat (handwritten notes)
+- **Photos:** Unsplash, served at the right size and format (WebP/AVIF) via `srcset`
 
-## Страницы
+## Pages
 
-| Страница | Что внутри |
+| Page | What's inside |
 | --- | --- |
-| `index.html` | Главный экран, история (тизер), «Анатомия чашки», авторские напитки, витрина десертов и выпечки, завтраки, атмосфера, отзывы, акции, приглашение в гости |
-| `menu.html` | Полное меню: 9 категорий, 38 позиций с фото и ценами в гривнах, поиск, добавки |
-| `story.html` | Хроника 2016–2024, путь «от зерна до чашки», цифры, ценности |
-| `gallery.html` | 16 фотографий с фильтрами и просмотром на весь экран |
-| `visit.html` | Бронирование столика на схеме зала, контакты, часы работы, карта |
-| `404.html` | Страница «пустой чашки» |
+| `index.html` | Hero, story teaser, “Anatomy of a cup”, signature drinks, desserts & bakery case, breakfast, atmosphere, reviews, offers, visit invitation |
+| `menu.html` | Full menu: 9 categories, 38 items with photos and prices in UAH, search, extras |
+| `story.html` | Timeline 2016–2024, “from bean to cup”, numbers, values |
+| `gallery.html` | 16 photos with filters and a full-screen viewer |
+| `visit.html` | Table booking on a floor plan, contacts, opening hours, map |
+| `404.html` | The “empty cup” page |
 
-## Что работает
+## Features
 
-- **Анатомия чашки** — выбираете напиток, и стакан наполняется слоями эспрессо, воды, молока и пены в реальных пропорциях
-- **Авторские напитки** — переключение напитка меняет фото, цену и вкусовой профиль (сладость, кислотность, тело, крепость)
-- **Завтраки** — живая шкала по времени Киева: сколько ещё подают завтраки
-- **Атмосфера** — точки на фото зала с описанием мест
-- **Отзывы** — стопка записок: листаются кнопками, стрелками клавиатуры и перетаскиванием
-- **Карта гостя** — интерактивные штампы, прогресс сохраняется в браузере
-- **Меню** — доступные вкладки (стрелки, Home/End), ссылки на категорию (`menu.html#cold`), поиск по названию, описанию и тегам
-- **Галерея** — фильтры, лайтбокс с клавиатурой, свайпом и счётчиком
-- **Бронирование** — гости, 14 дней вперёд, слоты по часам работы (прошедшее время отключено), выбор столика на схеме с учётом вместимости и занятости, маска телефона +380, проверка полей, подтверждение с номером брони, файл `.ics` для календаря, список «Ваши брони» с отменой, повод из ссылки (`visit.html?occasion=birthday`)
-- **Контакты** — подсветка сегодняшнего дня, статус «открыто/закрыто» по времени Киева, карта загружается по клику
-- Мобильное меню с ловушкой фокуса, закрытием по Esc, плавные появления при прокрутке, поддержка `prefers-reduced-motion`
-- SEO: уникальные title/description, Open Graph, canonical, разметка Schema.org `CafeOrCoffeeShop`, `sitemap.xml`, `robots.txt`
+- **Anatomy of a cup** — pick a drink and the glass fills with layers of espresso, water, milk and foam in real ratios
+- **Signature drinks** — switching drinks changes the photo, price and flavour profile (sweetness, acidity, body, strength)
+- **Breakfast** — a live timeline based on Kyiv time showing how long breakfast is still served
+- **Atmosphere** — hotspots on a photo of the room with descriptions
+- **Reviews** — a stack of notes you can flip with buttons, arrow keys or by dragging
+- **Loyalty card** — interactive stamps; progress is saved in the browser
+- **Menu** — accessible tabs (arrows, Home/End), deep links to categories (`menu.html#cold`), search across names, descriptions and tags
+- **Gallery** — filters and a lightbox with keyboard, swipe and a counter
+- **Booking** — guests, 14 days ahead, time slots based on opening hours (past times disabled), table selection on the floor plan with capacity and availability, a +380 phone mask, validation, a confirmation with a booking number, an `.ics` calendar file, a “Your bookings” list with cancellation, and an occasion preset from the link (`visit.html?occasion=birthday`)
+- **Contacts** — today's hours highlighted, an “open / closed” status based on Kyiv time, a map that loads on click
+- Mobile menu with a focus trap and Esc to close, smooth scroll-reveal animations, `prefers-reduced-motion` support
+- SEO: unique titles and descriptions, Open Graph, canonical URLs, Schema.org `CafeOrCoffeeShop` markup, `sitemap.xml`, `robots.txt`
 
-## Структура
+## Structure
 
 ```
 ├── index.html, menu.html, story.html, gallery.html, visit.html, 404.html
 ├── assets/
 │   ├── css/
-│   │   ├── tokens.css       — цвета, шрифты, размеры, тени, анимации
-│   │   ├── base.css         — сброс, типографика, сетка, появление
-│   │   ├── components.css   — шапка, меню, кнопки, поля, подвал
-│   │   └── sections.css     — секции главной и внутренних страниц
+│   │   ├── tokens.css       — colours, fonts, sizes, shadows, motion
+│   │   ├── base.css         — reset, typography, layout, reveal
+│   │   ├── components.css   — header, menu, buttons, fields, footer
+│   │   └── sections.css     — home page and inner page sections
 │   └── js/
-│       ├── core.js          — шапка, мобильное меню, анимации, время Киева
-│       ├── home.js          — интерактив главной
-│       ├── menu.js          — вкладки и поиск
-│       ├── story.js         — линия хроники
-│       ├── gallery.js       — фильтры и лайтбокс
-│       ├── config.js        — настройки (режим бронирования, контакты)
-│       └── booking.js       — бронирование и контакты
-├── server/booking-worker.js — пример серверной функции для реальных броней
+│       ├── core.js          — header, mobile menu, animations, Kyiv time
+│       ├── home.js          — home page interactions
+│       ├── menu.js          — tabs and search
+│       ├── story.js         — timeline progress
+│       ├── gallery.js       — filters and lightbox
+│       ├── config.js        — settings (booking mode, contacts)
+│       └── booking.js       — booking and contacts
+├── server/booking-worker.js — example backend for real bookings
 ├── favicon.svg, site.webmanifest, sitemap.xml, robots.txt
 ```
 
-Никаких фреймворков и сборки: чистые HTML, CSS и JavaScript.
+No frameworks and no build step: plain HTML, CSS and JavaScript.
 
-## Как подключить настоящее бронирование
+## Connecting real bookings
 
-Сейчас форма работает в **демо-режиме**: бронь сохраняется только в браузере посетителя. Чтобы заявки приходили администратору в Telegram:
+The form currently runs in **demo mode**: bookings are only stored in the visitor's browser. To send bookings to the café staff in Telegram:
 
-1. Создайте бота у [@BotFather](https://t.me/BotFather) и узнайте id чата, куда присылать заявки.
-2. Создайте бесплатный Worker на [Cloudflare](https://workers.cloudflare.com/) и вставьте код из `server/booking-worker.js`.
-3. Добавьте переменные окружения `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `ALLOWED_ORIGIN`.
-4. В `assets/js/config.js` поменяйте `mode: 'demo'` на `mode: 'endpoint'` и укажите адрес воркера в `endpoint`.
+1. Create a bot with [@BotFather](https://t.me/BotFather) and find the id of the chat that should receive bookings.
+2. Create a free Worker on [Cloudflare](https://workers.cloudflare.com/) and paste in the code from `server/booking-worker.js`.
+3. Add the environment variables `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` and `ALLOWED_ORIGIN`.
+4. In `assets/js/config.js`, change `mode: 'demo'` to `mode: 'endpoint'` and set `endpoint` to your worker URL.
 
-Сайт сам покажет ошибку и номер телефона, если сервер недоступен.
+If the server is unavailable, the site shows an error message with the café's phone number.
 
-## Запуск локально
+## Running locally
 
-Откройте `index.html` в браузере или запустите локальный сервер:
+Open `index.html` in a browser, or start a local server:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-## Важно
+## Note
 
-Это демо-проект. Название, адрес, телефон, цены, отзывы и история кофейни вымышлены. Ссылки на соцсети ведут на главные страницы Instagram, Telegram и Facebook — замените их на реальные аккаунты. Фотографии — [Unsplash](https://unsplash.com) (Unsplash License).
+This is a demo project. The café name, address, phone number, prices, reviews and history are fictional. The social links point to the Instagram, Telegram and Facebook home pages — replace them with real accounts. Photos: [Unsplash](https://unsplash.com) (Unsplash License).

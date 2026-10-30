@@ -1,24 +1,24 @@
 /**
- * Example — серверная часть бронирования (пример для Cloudflare Workers)
+ * Example — booking backend (example for Cloudflare Workers)
  * ---------------------------------------------------------------------
- * Принимает заявку с сайта (POST JSON), проверяет её и отправляет
- * уведомление администратору кофейни в Telegram.
+ * Receives a booking from the site (POST JSON), validates it and sends
+ * a notification to the café staff in Telegram.
  *
- * Переменные окружения (Settings → Variables в Cloudflare):
- *   TELEGRAM_BOT_TOKEN — токен бота от @BotFather
- *   TELEGRAM_CHAT_ID   — id чата или группы администраторов
- *   ALLOWED_ORIGIN     — адрес сайта, например https://timur-alt2008.github.io
+ * Environment variables (Settings → Variables in Cloudflare):
+ *   TELEGRAM_BOT_TOKEN — bot token from @BotFather
+ *   TELEGRAM_CHAT_ID   — id of the staff chat or group
+ *   ALLOWED_ORIGIN     — the site origin, e.g. https://timur-alt2008.github.io
  *
- * После публикации укажите адрес воркера в assets/js/config.js:
- *   booking: { mode: 'endpoint', endpoint: 'https://<ваш-воркер>.workers.dev' }
+ * Once deployed, put the worker URL into assets/js/config.js:
+ *   booking: { mode: 'endpoint', endpoint: 'https://<your-worker>.workers.dev' }
  */
 
 const OCCASIONS = {
-  casual: 'Просто встреча',
-  birthday: 'День рождения',
-  date: 'Свидание',
-  business: 'Деловая встреча',
-  work: 'Работа с ноутбуком',
+  casual: 'Just catching up',
+  birthday: 'Birthday',
+  date: 'Date',
+  business: 'Business meeting',
+  work: 'Working on a laptop',
 };
 
 function cors(env) {
@@ -37,14 +37,14 @@ function json(body, status, env) {
 }
 
 function validate(b) {
-  if (!b || typeof b !== 'object') return 'Пустая заявка';
-  if (!Number.isInteger(b.guests) || b.guests < 1 || b.guests > 8) return 'Неверное число гостей';
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(b.date || '')) return 'Неверная дата';
-  if (!/^\d{2}:\d{2}$/.test(b.time || '')) return 'Неверное время';
-  if (!/^\d{1,2}$/.test(String(b.table || ''))) return 'Не выбран столик';
-  if (typeof b.name !== 'string' || b.name.trim().length < 2 || b.name.length > 60) return 'Неверное имя';
-  if (String(b.phone || '').replace(/\D/g, '').length !== 12) return 'Неверный телефон';
-  if (b.comment && String(b.comment).length > 300) return 'Слишком длинный комментарий';
+  if (!b || typeof b !== 'object') return 'Empty request';
+  if (!Number.isInteger(b.guests) || b.guests < 1 || b.guests > 8) return 'Invalid number of guests';
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(b.date || '')) return 'Invalid date';
+  if (!/^\d{2}:\d{2}$/.test(b.time || '')) return 'Invalid time';
+  if (!/^\d{1,2}$/.test(String(b.table || ''))) return 'No table selected';
+  if (typeof b.name !== 'string' || b.name.trim().length < 2 || b.name.length > 60) return 'Invalid name';
+  if (String(b.phone || '').replace(/\D/g, '').length !== 12) return 'Invalid phone number';
+  if (b.comment && String(b.comment).length > 300) return 'Comment is too long';
   return null;
 }
 
@@ -59,7 +59,7 @@ export default {
     try {
       body = await request.json();
     } catch {
-      return json({ ok: false, error: 'Некорректный JSON' }, 400, env);
+      return json({ ok: false, error: 'Invalid JSON' }, 400, env);
     }
 
     const error = validate(body);
@@ -67,10 +67,10 @@ export default {
 
     const id = 'EX-' + Math.floor(1000 + Math.random() * 9000);
     const text = [
-      `☕ <b>Новая бронь ${id}</b>`,
-      `📅 ${body.date} в ${body.time}`,
-      `👥 Гостей: ${body.guests}`,
-      `🪑 Столик № ${escapeHtml(body.table)} (${escapeHtml(body.zone || '')})`,
+      `☕ <b>New booking ${id}</b>`,
+      `📅 ${body.date} at ${body.time}`,
+      `👥 Guests: ${body.guests}`,
+      `🪑 Table no. ${escapeHtml(body.table)} (${escapeHtml(body.zone || '')})`,
       `🙂 ${escapeHtml(body.name)} · ${escapeHtml(body.phone)}`,
       `🎉 ${OCCASIONS[body.occasion] || '—'}`,
       body.comment ? `💬 ${escapeHtml(body.comment)}` : '',
@@ -82,7 +82,7 @@ export default {
       body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text, parse_mode: 'HTML' }),
     });
 
-    if (!tg.ok) return json({ ok: false, error: 'Не удалось отправить уведомление' }, 502, env);
+    if (!tg.ok) return json({ ok: false, error: 'Could not send the notification' }, 502, env);
     return json({ ok: true, id }, 200, env);
   },
 };

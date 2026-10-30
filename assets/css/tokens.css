@@ -1,21 +1,21 @@
 /* =========================================================
-   Example — дизайн-токены
-   Палитра: молоко, крем, карамель, шоколад, кофе, дерево
+   Example — design tokens
+   Palette: milk, cream, caramel, chocolate, coffee, wood
    ========================================================= */
 :root {
-  /* молочные и кремовые */
+  /* milk and cream */
   --milk: #fbf6ee;
   --foam: #fffcf7;
   --cream: #f4eadb;
   --latte: #e8d6bc;
   --oat: #d9c2a0;
 
-  /* карамель */
+  /* caramel */
   --honey: #e4a95f;
   --caramel: #c27c3a;
   --caramel-600: #a2622a;
 
-  /* дерево, кофе, шоколад */
+  /* wood, coffee, chocolate */
   --wood-light: #b98a5e;
   --wood: #8b5e3c;
   --wood-dark: #6b4429;
@@ -23,7 +23,7 @@
   --chocolate: #33221a;
   --espresso: #20140e;
 
-  /* роли */
+  /* roles */
   --bg: var(--milk);
   --surface: var(--foam);
   --ink: var(--chocolate);
@@ -39,12 +39,12 @@
   --success: #5d7a45;
   --danger: #b2452f;
 
-  /* шрифты */
+  /* fonts */
   --font-display: "Yeseva One", "Georgia", "Times New Roman", serif;
   --font-body: "Golos Text", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
 
-  /* размеры шрифта */
+  /* font sizes */
   --fs-xs: 0.8125rem;
   --fs-sm: 0.9375rem;
   --fs-base: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
@@ -56,7 +56,7 @@
   --fs-mega: clamp(3.4rem, 0.5rem + 10vw, 9.5rem);
   --fs-hand: clamp(1.35rem, 1.2rem + 0.6vw, 1.7rem);
 
-  /* формы */
+  /* shapes */
   --r-xs: 8px;
   --r-s: 14px;
   --r-m: 22px;
@@ -65,12 +65,12 @@
   --r-arch: 999px 999px 28px 28px;
   --r-pill: 999px;
 
-  /* тени */
+  /* shadows */
   --shadow-1: 0 1px 2px rgba(51, 34, 26, 0.06), 0 10px 26px -14px rgba(51, 34, 26, 0.28);
   --shadow-2: 0 2px 6px rgba(51, 34, 26, 0.06), 0 24px 48px -24px rgba(51, 34, 26, 0.38);
   --shadow-3: 0 40px 80px -40px rgba(32, 20, 14, 0.6);
 
-  /* движение */
+  /* motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-pour: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
@@ -78,13 +78,13 @@
   --t-med: 0.45s;
   --t-slow: 0.9s;
 
-  /* сетка */
+  /* layout */
   --container: 1320px;
   --gutter: clamp(16px, 4vw, 48px);
   --header-h: 76px;
   --section-y: clamp(72px, 9vw, 140px);
 
-  /* текстуры */
+  /* textures */
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .13 0 0 0 0 .1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --wood-grain: repeating-linear-gradient(92deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 9px, rgba(0, 0, 0, 0.06) 9px 10px, transparent 10px 17px),
     linear-gradient(180deg, #a87449 0%, #8b5e3c 45%, #6f472b 100%);

@@ -1,5 +1,5 @@
 /* =========================================================
-   Example — интерактив главной страницы
+   Example — home page interactions
    ========================================================= */
 (function () {
   'use strict';
@@ -7,14 +7,14 @@
   var $ = EX.$;
   var $$ = EX.$$;
 
-  /* ---------- Анатомия чашки ---------- */
+  /* ---------- Anatomy of a cup ---------- */
   function initAnatomy() {
     var root = $('[data-anatomy]');
     var dataEl = $('#anatomy-data');
     if (!root || !dataEl) return;
     var drinks;
     try { drinks = JSON.parse(dataEl.textContent); } catch (e) { return; }
-    var names = { espresso: 'эспрессо', water: 'вода', milk: 'молоко', foam: 'пена' };
+    var names = { espresso: 'espresso', water: 'water', milk: 'milk', foam: 'foam' };
     var picks = $$('[data-drink]', root);
     var fill = $('[data-fill]', root);
     var layers = {};
@@ -55,7 +55,7 @@
     show(drinks[0].id);
   }
 
-  /* ---------- Авторские напитки ---------- */
+  /* ---------- Signature drinks ---------- */
   function initSignature() {
     var root = $('[data-sig]');
     if (!root) return;
@@ -84,7 +84,7 @@
     });
   }
 
-  /* ---------- Завтраки: живая шкала времени ---------- */
+  /* ---------- Breakfast: live timeline ---------- */
   function initBreakfastClock() {
     var root = $('[data-brk-clock]');
     if (!root) return;
@@ -99,22 +99,22 @@
       var m = now.minutes;
       var p = Math.max(0, Math.min(1, (m - START) / (13 * 60 - START)));
       root.style.setProperty('--p', (p * 100).toFixed(1) + '%');
-      nowEl.textContent = 'Сейчас в Киеве ' + EX.fromMin(m);
+      nowEl.textContent = 'Now in Kyiv ' + EX.fromMin(m);
       var text;
-      if (m < open) text = 'откроемся в ' + EX.HOURS[now.wd][0] + ' — и сразу завтраки';
+      if (m < open) text = 'we open at ' + EX.HOURS[now.wd][0] + ' — breakfast straight away';
       else if (m < end) {
         var left = end - m;
         var h = Math.floor(left / 60);
         var mm = left % 60;
-        text = 'завтраки ещё ' + (h ? h + ' ч ' : '') + mm + ' мин';
-      } else text = 'завтраки закончились — ждём завтра';
+        text = 'breakfast for another ' + (h ? h + '\u00a0h ' : '') + mm + '\u00a0min';
+      } else text = 'breakfast is over — see you tomorrow';
       statusEl.textContent = text;
     };
     update();
     setInterval(update, 30000);
   }
 
-  /* ---------- Атмосфера: точки на фото ---------- */
+  /* ---------- Atmosphere: photo hotspots ---------- */
   function initHotspots() {
     var root = $('[data-hotspots]');
     if (!root) return;
@@ -137,7 +137,7 @@
     });
   }
 
-  /* ---------- Отзывы: стопка записок ---------- */
+  /* ---------- Reviews: a stack of notes ---------- */
   function initNotes() {
     var root = $('[data-notes]');
     if (!root) return;
@@ -198,7 +198,7 @@
       if (e.key === 'ArrowLeft') { e.preventDefault(); next(-1); }
     });
 
-    /* перетаскивание верхней записки */
+    /* drag the top note */
     var startX = 0;
     var startY = 0;
     var dragging = false;
@@ -248,7 +248,7 @@
     layout();
   }
 
-  /* ---------- Карта гостя ---------- */
+  /* ---------- Loyalty card ---------- */
   function initStampcard() {
     var root = $('[data-stampcard]');
     if (!root) return;
@@ -262,9 +262,9 @@
     var render = function (announce) {
       stamps.forEach(function (s, i) { s.setAttribute('aria-pressed', String(i < count)); });
       gift.classList.toggle('is-ready', count === 9);
-      status.textContent = count === 9 ? 'Ура! Следующая чашка — бесплатно' : 'До бесплатной чашки — ' + (9 - count);
+      status.textContent = count === 9 ? 'Hooray! Your next cup is free' : (9 - count) + (9 - count === 1 ? ' cup' : ' cups') + ' to go until a free one';
       EX.store.set(KEY, count);
-      if (announce && count === 9) EX.toast('Карта заполнена — покажите её бариста ☕');
+      if (announce && count === 9) EX.toast('Card complete — show it to your barista ☕');
     };
 
     stamps.forEach(function (s, i) {

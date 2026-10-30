@@ -1,5 +1,5 @@
 /* =========================================================
-   Example — меню: вкладки категорий, поиск, ссылки по якорю
+   Example — menu: category tabs, search, deep links
    ========================================================= */
 (function () {
   'use strict';
@@ -40,7 +40,7 @@
         }
       });
       moveInk(tab);
-      /* держим активную вкладку в зоне видимости */
+      /* keep the active tab in view */
       var left = tab.offsetLeft - scroller.clientWidth / 2 + tab.offsetWidth / 2;
       scroller.scrollTo({ left: left, behavior: EX.reduceMotion() ? 'auto' : 'smooth' });
       if (opts.focus) tab.focus();
@@ -73,7 +73,7 @@
     window.addEventListener('resize', function () { moveInk($('[role="tab"][aria-selected="true"]')); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { moveInk($('[role="tab"][aria-selected="true"]')); });
 
-    /* ---------- поиск ---------- */
+    /* ---------- search ---------- */
     var input = $('[data-menu-search]');
     var clearBtn = $('[data-search-clear]');
     var results = $('[data-menu-results]');
@@ -84,11 +84,7 @@
     var lastTab = 'classic';
 
     var plural = function (n) {
-      var m10 = n % 10;
-      var m100 = n % 100;
-      if (m10 === 1 && m100 !== 11) return 'позиция';
-      if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return 'позиции';
-      return 'позиций';
+      return n === 1 ? 'item' : 'items';
     };
 
     var run = function () {
@@ -111,7 +107,7 @@
       });
       list.innerHTML = '';
       found.forEach(function (d) { list.appendChild(d.cloneNode(true)); });
-      title.textContent = found.length ? 'Нашли ' + found.length + ' ' + plural(found.length) : 'Ничего не нашли';
+      title.textContent = found.length ? 'Found ' + found.length + ' ' + plural(found.length) : 'Nothing found';
       empty.hidden = found.length > 0;
       results.hidden = false;
     };
@@ -129,7 +125,7 @@
     input.addEventListener('keydown', function (e) { if (e.key === 'Escape') { input.value = ''; run(); } });
     clearBtn.addEventListener('click', function () { input.value = ''; run(); input.focus(); });
 
-    /* ---------- стартовая вкладка из адреса (#signature и т.п.) ---------- */
+    /* ---------- initial tab from the URL hash (#signature etc.) ---------- */
     var fromHash = function () {
       var id = (location.hash || '').replace('#', '');
       if (id && $('#tab-' + id)) {
