@@ -7,6 +7,23 @@
   var root = document.documentElement;
   root.classList.add('js');
 
+  /* ---------- always open a page at the very top ----------
+     Browsers restore the previous scroll position on reload and when
+     returning to a page. We switch that off, so every visit starts at the
+     top. Links that point to a section (#booking, #signature…) still work. */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  var toTopOnOpen = function () {
+    if (location.hash && location.hash.length > 1) return;
+    var html = document.documentElement;
+    var prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    html.style.scrollBehavior = prev;
+  };
+  toTopOnOpen();
+  window.addEventListener('load', toTopOnOpen);
+  window.addEventListener('pageshow', function (e) { if (e.persisted) toTopOnOpen(); });
+
   var EX = (window.EX = window.EX || {});
   var reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
 
